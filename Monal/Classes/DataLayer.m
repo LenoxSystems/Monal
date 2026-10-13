@@ -1277,7 +1277,7 @@ static NSDateFormatter* dbFormatter;
 
                 NSInteger sourceGMTOffset = [sourceTimeZone secondsFromGMTForDate:sourceDate];
                 NSInteger destinationGMTOffset = [destinationTimeZone secondsFromGMTForDate:sourceDate];
-                NSTimeInterval interval = destinationGMTOffset - sourceGMTOffset;
+                NSTimeInterval interval = (NSTimeInterval)(destinationGMTOffset - sourceGMTOffset);
 
                 destinationDate = [[NSDate alloc] initWithTimeInterval:interval sinceDate:sourceDate];
             }
@@ -2392,9 +2392,9 @@ static NSDateFormatter* dbFormatter;
         {
             if(globalIdle == nil)
                 return (NSDate*)nil;
-            return [NSDate dateWithTimeIntervalSince1970:[globalIdle integerValue]];
+            return [NSDate dateWithTimeIntervalSince1970:[globalIdle doubleValue]];
         }
-        return [NSDate dateWithTimeIntervalSince1970:[idle integerValue]];
+        return [NSDate dateWithTimeIntervalSince1970:[idle doubleValue]];
     }];
 }
 
@@ -2408,7 +2408,7 @@ static NSDateFormatter* dbFormatter;
         DDLogDebug(@"LastInteraction of %@/%@ lastInteraction=%@", jid, resource, lastInteraction);
         if(lastInteraction == nil)
             return (NSDate*)nil;
-        return [NSDate dateWithTimeIntervalSince1970:[lastInteraction integerValue]];
+        return [NSDate dateWithTimeIntervalSince1970:[lastInteraction doubleValue]];
     }];
 }
 

@@ -1544,7 +1544,7 @@ NSDictionary* _Nullable dictionaryComprehension(NSDictionary* _Nullable dict, id
         //now reduce quality until image data is smaller than provided size
         unsigned int i = 0;
         double qualityList[] = {0.96, 0.80, 0.64, 0.48, 0.32, 0.24, 0.16, 0.10, 0.09, 0.08, 0.07, 0.06, 0.05, 0.04, 0.03, 0.02, 0.01};
-        for(i = 0; (data == nil || (data.length * 1.5) > length) && i < sizeof(qualityList) / sizeof(qualityList[0]); i++)
+        for(i = 0; (data == nil || ((double)data.length * 1.5) > (double)length) && i < sizeof(qualityList) / sizeof(qualityList[0]); i++)
         {
             DDLogDebug(@"Resizing new avatar to quality %f", qualityList[i]);
             data = UIImageJPEGRepresentation(resizedImage, qualityList[i]);
@@ -1597,7 +1597,7 @@ NSDictionary* _Nullable dictionaryComprehension(NSDictionary* _Nullable dict, id
 {
     NSArray* suffixes = @[@"B", @"KiB", @"MiB", @"GiB", @"TiB", @"PiB", @"EiB"];
     NSString* prefix = @"";
-    double size = bytes;
+    double size = (double)bytes;
     if(size < 0)
     {
         prefix = @"-";

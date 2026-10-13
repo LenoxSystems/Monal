@@ -1403,7 +1403,7 @@ NSString* const kStanza = @"stanza";
                 //use a much smaller limit while in appex because memory there is limited to ~32MiB
                 unsigned long operationCount = [self->_parseQueue operationCount];
                 double usedMemory = [HelperTools report_memory];
-                if(!(operationCount > 256 || (appex && usedMemory > (0.5*availableMemory) && operationCount > MAX(2, (0.75*availableMemory) - usedMemory))))
+                if(!(operationCount > 256 || (appex && usedMemory > (0.5*availableMemory) && (double)operationCount > MAX(2, (0.75*availableMemory) - usedMemory))))
                     break;
                 
                 double waittime = (double)[self->_parseQueue operationCount] / 256.0;
