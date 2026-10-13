@@ -1,0 +1,14 @@
+services:
+  prosody:
+    image: prosodyim/prosody:13.0
+    container_name: kim-prosody
+    ports:
+      - "127.0.0.1:5222:5222"
+      - "127.0.0.1:5281:5281"
+    volumes:
+      - ./prosody.cfg.lua:/etc/prosody/prosody.cfg.lua:ro
+      - ./certs/kim.localtest.me.crt:/etc/prosody/certs/kim.localtest.me.crt:ro
+      - ./certs/kim.localtest.me.key:/etc/prosody/certs/kim.localtest.me.key:ro
+      - prosody-data:/var/lib/prosody
+volumes:
+  prosody-data:
