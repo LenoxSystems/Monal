@@ -249,7 +249,7 @@ static NSMutableDictionary* _singletonCache;
             @"lastInteraction": nilWrapper(nil),
             @"rosterGroups": [NSSet set],
             @"reached_mam_archive_top": @NO,
-            @"explicit_omemo_trust_activated": self.account == nil ? @NO : [self.account.omemo isExplicitlyTrusted:jid],
+            @"explicit_omemo_trust_activated": [[MLXMPPManager sharedInstance] getEnabledAccountForID:accountID] == nil ? @NO : @([[[MLXMPPManager sharedInstance] getEnabledAccountForID:accountID].omemo isExplicitlyTrusted:jid]),
         }];
     }
     else
