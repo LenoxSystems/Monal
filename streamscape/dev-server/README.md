@@ -18,12 +18,14 @@ with the password from `accounts.local.json`.
 
 ## Simulated agent
 
-Requires `pip install slixmpp` (1.17+).
+Requires `pip install slixmpp aiohttp` (slixmpp 1.17+).
 
 ```sh
 python agent-sim.py links            # link-rendering test messages
 python agent-sim.py react 👍          # react to the tester's next message (XEP-0444)
 python agent-sim.py say "hello"      # one plain message
+python agent-sim.py file photo.jpg   # upload and send a file (image, .m4a voice note)
+python agent-sim.py listen           # print incoming messages and reactions; run in a foreground terminal
 ```
 
 `certs/` and `accounts.local.json` are git-ignored. Stop with `docker compose down`;
